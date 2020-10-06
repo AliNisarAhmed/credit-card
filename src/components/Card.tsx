@@ -4,6 +4,7 @@ import DisplayExpiryDate from './DisplayExpiryDate';
 import styled from 'styled-components';
 import CardNumber from './CardNumber';
 import image from '../assets/chip2.png';
+import Visa from './Visa';
 
 interface DisplayedNameProps {
 	focusedInput: string | null;
@@ -32,6 +33,11 @@ const Chip = styled.div`
 	grid-row: 1 / 2;
 `;
 
+const SvgIcon = styled.div`
+	width: 100px;
+	height: 50px;
+`;
+
 const DisplayedName = styled.div`
 	text-transform: uppercase;
 	grid-column: 1 / 2;
@@ -54,6 +60,9 @@ const Card: React.FC = () => {
 	return (
 		<CardBody>
 			<Chip />
+			<SvgIcon>
+				<Visa />
+			</SvgIcon>
 			<CardNumber
 				cardNumber={displayedCardNumber}
 				focusedInput={focusedInput}
