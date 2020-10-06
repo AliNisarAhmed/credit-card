@@ -1,49 +1,49 @@
-import React from "react";
-import AppContext from "../context/AppContext";
-import styled from "styled-components";
-import { formatCardNumber, formatValidThru } from "../utils/utils";
+import React from 'react';
+import AppContext from '../context/AppContext';
+import styled from 'styled-components';
+import { formatCardNumber, formatValidThru } from '../utils/utils';
 
 interface IProps {}
 
-type InputNames = "cardNumber" | "holderName";
+type InputNames = 'cardNumber' | 'holderName';
 
 const FormContainer = styled.div`
-	margin: 0 auto;
-	padding: 20px 0;
-	width: 100%;
-	border: 1px solid blue;
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	margin-top: 15px;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 100%;
+  border: 1px solid blue;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 `;
 
 const FormItemContainer = styled.div`
-	padding: 10px;
+  padding: 10px;
 `;
 
 const StyledLabel = styled.label`
-	font-size: 20px;
-	color: steelblue;
+  font-size: 20px;
+  color: steelblue;
 `;
 
 const StyledInput = styled.input`
-	padding: 10px 15px;
-	color: steelblue;
-	font-size: 20px;
-	outline: none;
-	border: 1px solid steelblue;
-	border-radius: 4px;
+  padding: 10px 15px;
+  color: steelblue;
+  font-size: 20px;
+  outline: none;
+  border: 1px solid steelblue;
+  border-radius: 4px;
 
-	max-width: 300px;
+  max-width: 300px;
 
-	&:focus {
-		border: 1px solid tomato;
-	}
+  &:focus {
+    border: 1px solid tomato;
+  }
 `;
 
 const StyledInputSmall = styled(StyledInput)`
-	max-width: 110px;
+  max-width: 110px;
 `;
 
 const Form: React.FC<IProps> = () => {
@@ -101,13 +101,7 @@ const Form: React.FC<IProps> = () => {
         </FormItemContainer>
         <FormItemContainer>
           <StyledLabel htmlFor="cvv">CVV</StyledLabel>
-          <StyledInputSmall
-            id="cvv"
-            type="text"
-            placeholder="XXX"
-            onFocus={onInputFocus}
-            onBlur={onInputBlur}
-          />
+          <StyledInputSmall id="cvv" type="text" placeholder="XXX" onFocus={onInputFocus} onBlur={onInputBlur} />
         </FormItemContainer>
       </form>
     </FormContainer>
@@ -115,7 +109,7 @@ const Form: React.FC<IProps> = () => {
 
   function onInputFocus(e: React.FocusEvent<HTMLInputElement>) {
     const { id } = e.currentTarget;
-    console.log("___id", { id });
+    console.log('___id', { id });
     setFocusedInput(id);
   }
 
@@ -133,9 +127,9 @@ const Form: React.FC<IProps> = () => {
       name: InputNames;
       value: string;
     };
-    if (name === "cardNumber") {
+    if (name === 'cardNumber') {
       setCardNumber((prev) => formatCardNumber(prev, value));
-    } else if (name === "holderName") {
+    } else if (name === 'holderName') {
       setHolderName(value);
     }
   }
