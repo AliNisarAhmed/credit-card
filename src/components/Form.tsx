@@ -15,6 +15,7 @@ const FormContainer = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
 `;
 
 const FormItemContainer = styled.div`
@@ -108,6 +109,7 @@ const Form: React.FC<IProps> = () => {
 
   function onInputFocus(e: React.FocusEvent<HTMLInputElement>) {
     const { id } = e.currentTarget;
+    console.log('___id', { id });
     setFocusedInput(id);
   }
 
