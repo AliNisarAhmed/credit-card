@@ -15,7 +15,8 @@ const AppContextProvider: React.FC = (props) => {
   const [month, setMonth] = React.useState<string>(initalMonth);
   const [year, setYear] = React.useState<string>(initalYear);
   const [validThru, setValidThru] = React.useState<string>('');
-  const [focusedInput, setFocusedInput] = React.useState<string | null>(null);
+  const [cvv, setCvv] = React.useState<string>('');
+  const [focusedInput, setFocusedInput] = React.useState<string | null>('cvv');
 
   const [displayedCardNumber, setDisplayedCardNumber] = React.useState(initialDisplayed);
   const [displayedName, setDisplayedName] = React.useState(initialDisplayedName);
@@ -37,6 +38,8 @@ const AppContextProvider: React.FC = (props) => {
     setValidThru,
     focusedInput,
     setFocusedInput,
+    cvv,
+    setCvv,
   };
 
   React.useEffect(() => {

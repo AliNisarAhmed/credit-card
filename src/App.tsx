@@ -10,7 +10,14 @@ const AppContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
   padding: 15px;
-  border: 1px solid red;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: space-between;
 `;
 
 const App: React.FC = () => {

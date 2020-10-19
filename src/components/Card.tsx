@@ -39,27 +39,16 @@ const CardBody = styled.div`
   grid-template-rows: 1fr 3fr 1fr;
 `;
 
-const CardBodyBack = styled.div`
-  position: absolute;
-  width: 400px;
-  height: 225px;
-  border-radius: 10px;
-  padding: 10px 20px;
-  background-color: gray;
-  box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.4);
-
-  backface-visibility: hidden;
-  transition: transform 500ms;
-  transform-style: preserve-3d;
-  transform: ${(props: CardBodyProps) => (props.isFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)')};
-`;
-
 const Chip = styled.div`
-  background-image: url(${image});
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   grid-column: 1/ 2;
   grid-row: 1 / 2;
+`;
+
+const ChipImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const SvgIcon = styled.div`
@@ -77,19 +66,101 @@ const DisplayedName = styled.div`
   color: ${(props: DisplayedNameProps) => (props.focusedInput === 'holderName' ? 'white' : 'silver')};
 `;
 
+const CardBodyBack = styled.div`
+  position: absolute;
+  width: 400px;
+  height: 225px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: gray;
+  box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.4);
+
+  backface-visibility: hidden;
+  transition: transform 500ms;
+  transform-style: preserve-3d;
+  transform: ${(props: CardBodyProps) => (props.isFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)')};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+const Blackbar = styled.div`
+  width: 400px;
+  background-color: black;
+  height: 20px;
+  margin-left: -20px;
+`;
+
+const SignaturAndCvv = styled.div`
+  display: flex;
+`;
+
+const Signature = styled.div`
+  position: relative;
+
+  height: 40px;
+  width: 250px;
+  background-color: mintcream;
+
+  margin-right: 8px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    opacity: 0.2;
+    width: 100%;
+    background-color: blue;
+    height: 2px;
+
+    box-shadow: 0px 8px 0 blue;
+  }
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    opacity: 0.2;
+    width: 100%;
+    background-color: blue;
+    height: 2px;
+
+    box-shadow: 0px -8px 0 blue;
+  }
+`;
+
+const Cvv = styled.div``;
+
+const SilverChip = styled.div`
+  background-color: silver;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+`;
+
 const Card: React.FC = () => {
-  const { displayedCardNumber, displayedName, month, year, focusedInput } = React.useContext(AppContext);
+  const { displayedCardNumber, displayedName, month, year, focusedInput, cvv } = React.useContext(AppContext);
   return (
     <CardWrapper>
       <CardBody isFlipped={focusedInput === 'cvv'}>
-        <Chip />
+        <Chip>
+          <ChipImage src={image} alt="Chip" />
+        </Chip>
         <CardNumber cardNumber={displayedCardNumber} focusedInput={focusedInput} />
         <DisplayedName data-testid="holderName" focusedInput={focusedInput}>
           <p>{displayedName}</p>
         </DisplayedName>
         <DisplayExpiryDate month={month} year={year} focusedInput={focusedInput} />
       </CardBody>
-      <CardBodyBack isFlipped={focusedInput === 'cvv'} />
+      <CardBodyBack isFlipped={focusedInput === 'cvv'}>
+        <Blackbar />
+        <SignaturAndCvv>
+          <Signature />
+          <Cvv>{cvv}</Cvv>
+        </SignaturAndCvv>
+        <SilverChip />
+      </CardBodyBack>
     </CardWrapper>
   );
 };
