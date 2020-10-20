@@ -21,6 +21,8 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   height: 225px;
+
+  perspective: 1000px;
 `;
 
 const CardBody = styled.div`
@@ -33,7 +35,7 @@ const CardBody = styled.div`
   box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.4);
 
   backface-visibility: hidden;
-  transition: transform 500ms;
+  transition: transform 0.5s;
   transform-style: preserve-3d;
   transform: ${(props: CardBodyProps) => (props.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 
@@ -89,7 +91,7 @@ const CardBodyBack = styled.div`
   box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.4);
 
   backface-visibility: hidden;
-  transition: transform 500ms;
+  transition: transform 0.5s;
   transform-style: preserve-3d;
   transform: ${(props: CardBodyProps) => (props.isFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)')};
 
