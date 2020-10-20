@@ -4,6 +4,7 @@ import DisplayExpiryDate from './DisplayExpiryDate';
 import styled from 'styled-components';
 import CardNumber from './CardNumber';
 import image from '../assets/chip2.png';
+import CardNumberBack from './CardNumberBack';
 
 interface DisplayedNameProps {
   focusedInput: string | null;
@@ -25,7 +26,7 @@ const CardBody = styled.div`
   width: 400px;
   height: 225px;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 40px;
   background-color: gray;
   box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.4);
 
@@ -35,15 +36,15 @@ const CardBody = styled.div`
   transform: ${(props: CardBodyProps) => (props.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
 `;
 
 const Chip = styled.div`
   width: 60px;
   height: 60px;
-  grid-column: 1/ 2;
-  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 `;
 
 const ChipImage = styled.img`
@@ -58,13 +59,22 @@ const SvgIcon = styled.div`
 
 const DisplayedName = styled.div`
   text-transform: uppercase;
-  grid-column: 1 / 2;
-  grid-row: 3 / -1;
+  grid-column: 1 / 3;
+  grid-row: 5 / -1;
   justify-self: start;
   align-self: center;
 
-  color: ${(props: DisplayedNameProps) => (props.focusedInput === 'holderName' ? 'white' : 'silver')};
+  color: transparent;
+
+  text-shadow: -1px 1px 1px black;
+
+  background-image: linear-gradient(45deg, rgba(200, 200, 200, 0.6), rgba(255, 255, 255, 0.4));
+  background-clip: text;
+  background-size: 100%;
+  background-repeat: repeat;
 `;
+
+//  ------- CARD BACK --------- //
 
 const CardBodyBack = styled.div`
   position: absolute;
@@ -87,7 +97,7 @@ const CardBodyBack = styled.div`
 
 const Blackbar = styled.div`
   width: 400px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   height: 20px;
   margin-left: -20px;
 `;
@@ -148,7 +158,7 @@ const Card: React.FC = () => {
           <ChipImage src={image} alt="Chip" />
         </Chip>
         <CardNumber cardNumber={displayedCardNumber} focusedInput={focusedInput} />
-        <DisplayedName data-testid="holderName" focusedInput={focusedInput}>
+        <DisplayedName data-testid="holderName">
           <p>{displayedName}</p>
         </DisplayedName>
         <DisplayExpiryDate month={month} year={year} focusedInput={focusedInput} />
@@ -159,6 +169,7 @@ const Card: React.FC = () => {
           <Signature />
           <Cvv>{cvv}</Cvv>
         </SignaturAndCvv>
+        <CardNumberBack cardNumber={displayedCardNumber} focusedInput={focusedInput} />
         <SilverChip />
       </CardBodyBack>
     </CardWrapper>

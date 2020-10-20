@@ -13,22 +13,28 @@ interface CNTProps {
 
 const CardNumberContainer = styled.div`
   grid-column: 1 / -1;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
   align-self: end;
-  margin-bottom: 10px;
+
+  padding: 0 20px;
 `;
 
-const CardNumberText = styled.div`
-  font-size: 25px;
-  color: ${(props: CNTProps) => (props.focusedInput === 'cardNumber' ? 'white' : 'silver')};
+const CardNumberText = styled.p`
+  font-size: 30px;
+  color: transparent;
+
+  text-shadow: -1px 1px 1px black;
+
+  background-image: linear-gradient(45deg, rgba(200, 200, 200, 0.6), rgba(255, 255, 255, 0.8));
+  background-clip: text;
+  background-size: 100%;
+  background-repeat: repeat;
 `;
 
 const CardNumber: React.FC<IProps> = ({ cardNumber, focusedInput }) => {
   return (
     <CardNumberContainer>
-      <CardNumberText data-testid="cardNumberDisplay" focusedInput={focusedInput}>
-        {cardNumber}
-      </CardNumberText>
+      <CardNumberText data-testid="cardNumberDisplay">{cardNumber}</CardNumberText>
     </CardNumberContainer>
   );
 };

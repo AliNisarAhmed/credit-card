@@ -7,7 +7,7 @@ const initialCardNumber = '';
 const initialDisplayedName = 'Your Name here';
 const initalMonth = '';
 const initalYear = '';
-const initialDisplayed = '**** **** **** ****';
+const initialDisplayed = '****  ****  ****  ****';
 
 const AppContextProvider: React.FC = (props) => {
   const [cardNumber, setCardNumber] = React.useState<string>(initialCardNumber);
@@ -16,7 +16,7 @@ const AppContextProvider: React.FC = (props) => {
   const [year, setYear] = React.useState<string>(initalYear);
   const [validThru, setValidThru] = React.useState<string>('');
   const [cvv, setCvv] = React.useState<string>('');
-  const [focusedInput, setFocusedInput] = React.useState<string | null>('cvv');
+  const [focusedInput, setFocusedInput] = React.useState<string | null>(null);
 
   const [displayedCardNumber, setDisplayedCardNumber] = React.useState(initialDisplayed);
   const [displayedName, setDisplayedName] = React.useState(initialDisplayedName);
