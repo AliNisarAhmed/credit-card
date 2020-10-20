@@ -11,20 +11,38 @@ type ExpiryDateProps = Pick<IProps, 'focusedInput'>;
 
 const ExpiryDateContainer = styled.div`
   align-self: center;
-  grid-column: 2 / -1;
-  grid-row: 3 / -1;
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
   justify-self: end;
   align-self: center;
   color: ${(props: ExpiryDateProps) => (props.focusedInput === 'validThru' ? 'white' : 'silver')};
+
+  display: flex;
+
+  align-items: baseline;
+
+  font-size: 14px;
 `;
 
-const StyledLabel = styled.p`
+const StyledLabel = styled.span`
   text-align: center;
   margin-bottom: 4px;
+  margin-right: 10px;
+  color: black;
+
+  font-size: 10px;
 `;
 
 const ExpiryDate = styled.div`
   text-align: center;
+  color: transparent;
+
+  text-shadow: -1px 1px 1px black;
+
+  background-image: linear-gradient(45deg, rgba(200, 200, 200, 0.6), rgba(255, 255, 255, 0.4));
+  background-clip: text;
+  background-size: 100%;
+  background-repeat: repeat;
 `;
 
 const DisplayExpiryDate: React.FC<IProps> = ({ month, year, focusedInput }) => {
@@ -33,7 +51,7 @@ const DisplayExpiryDate: React.FC<IProps> = ({ month, year, focusedInput }) => {
 
   return (
     <ExpiryDateContainer focusedInput={focusedInput}>
-      <StyledLabel>Valid thru:</StyledLabel>
+      <StyledLabel>Valid Thru:</StyledLabel>
       <ExpiryDate>
         {displayMonth} / {displayedYear}
       </ExpiryDate>
