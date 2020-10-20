@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface IProps {
-  cardNumber: string;
-  focusedInput: string | null;
+  displayedName: string;
 }
 
-const CardNumberBackStyles = styled.p<{ focusedInput: string | null }>`
-  grid-column: 1 / -1;
-  grid-row: 4 / 5;
+const CardHolderName = styled.p`
+  grid-column: 2 / 4;
+  grid-row: 5 / -1;
 
   justify-self: center;
 
@@ -33,10 +32,11 @@ const CardNumberBackStyles = styled.p<{ focusedInput: string | null }>`
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
+  text-transform: uppercase;
 `;
 
-const CardNumberBack: React.FC<IProps> = ({ cardNumber, focusedInput }) => {
-  return <CardNumberBackStyles focusedInput={focusedInput}>{cardNumber}</CardNumberBackStyles>;
+const CardNameBack: React.FC<IProps> = ({ displayedName }) => {
+  return <CardHolderName>{displayedName}</CardHolderName>;
 };
 
-export default CardNumberBack;
+export default CardNameBack;

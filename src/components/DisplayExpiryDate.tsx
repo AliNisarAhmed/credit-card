@@ -19,6 +19,8 @@ const ExpiryDateContainer = styled.div`
 
   display: flex;
 
+  align-items: baseline;
+
   font-size: 14px;
 `;
 
@@ -27,6 +29,8 @@ const StyledLabel = styled.span`
   margin-bottom: 4px;
   margin-right: 10px;
   color: black;
+
+  font-size: 10px;
 `;
 
 const ExpiryDate = styled.div`

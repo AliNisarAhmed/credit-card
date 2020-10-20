@@ -20,7 +20,7 @@ const CardNumberContainer = styled.div`
 `;
 
 const CardNumberText = styled.p`
-  font-size: 30px;
+  font-size: 20px;
   color: transparent;
 
   text-shadow: -1px 1px 1px black;

@@ -84,3 +84,17 @@ export function isWhiteSpace(str: string): boolean {
 export function isAlpha(str: string): boolean {
   return /[a-zA-Z]/g.test(str);
 }
+
+export type CardCompany = 'Visa' | 'MasterCard' | 'AmericanExpress';
+
+export const getCardCompany = (cardNumber: string): CardCompany | null => {
+  if (cardNumber.startsWith('5')) {
+    return 'MasterCard';
+  } else if (cardNumber.startsWith('4')) {
+    return 'Visa';
+  } else if (cardNumber.startsWith('3')) {
+    return 'AmericanExpress';
+  }
+
+  return null;
+};
